@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const path = require('path')
 const morgan = require('morgan')
+const router = require('../../../routers/propertyRoutes.js')
 
 const app = express()
 
@@ -12,6 +13,6 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(morgan('dev'))
 
-const database = require('../../../database/index.js')
+app.use('/api/v1', router)
 
 module.exports = app
